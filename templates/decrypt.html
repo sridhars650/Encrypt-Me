@@ -7,6 +7,22 @@
     <title>Decryption Chamber</title>
 </head>
 <body>
+    <form action="/decrypt" method="post">
+        <label for="key">Enter your encrypted key here:</label><br>
+        <input type="text" id="key" name="key" required><br><br>
+        <label for="fernet_key">Enter your Fernet key here (only for Fernet encryption/decryption):</label><br>
+        <input type="text" id="fernet_key" name="fernet_key"><br><br>
+        <label for="method">Select the encryption method:</label><br>
+        <select id="method" name="method" required>
+            <option value="1">base64</option>
+            <option value="2">a85</option>
+            <option value="3">base16</option>
+            <option value="4">base32</option>
+            <option value="5">base32hex</option>
+            <option value="6">Fernet</option>
+        </select><br><br>
+
+        <input type="submit" value="Decrypt">
     
 </body>
 </html>

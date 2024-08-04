@@ -6,11 +6,32 @@
     <title>Encryption Chamber</title>
 </head>
 <body>
-    <form>
-        <label for="fname">Enter your key here</label><br>
-        <input type="text" id="fname" name="fname"><br>
-        <label for="lname">Enter your Fernet key here:</label><br>
-        <input type="text" id="lname" name="lname">
+    <form action="/encrypt" method="post">
+        <label for="key">Enter your key here:</label><br>
+        <input type="text" id="key" name="key" required><br><br>
+
+
+        <label for="method">Select the encryption method:</label><br>
+        <select id="method" name="method" required>
+            <option value="1">base64</option>
+            <option value="2">a85</option>
+            <option value="3">base16</option>
+            <option value="4">base32</option>
+            <option value="5">base32hex</option>
+            <option value="6">Fernet</option>
+        </select><br><br>
+
+        <input type="submit" value="Encrypt">
     </form>
+    {% if encryptedKey %}
+    <h3>Your Encrypted Key is:</h3>
+    <h2>{{ encryptedKey }}</h2>
+    {% endif %}
+    {% if fernet_key %}
+    <h3>Save this key for decryption (If you used Fernet):</h3>
+    <h2>{{ fernet_key }}</h2>
+    {% endif %}
+
+    <button onclick="location.href='/decrypt'">Decrypt It!</button>
 </body>
 </html>
