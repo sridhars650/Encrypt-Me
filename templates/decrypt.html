@@ -40,23 +40,23 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var decryptedKey = "{{ decryptedKey|default('') }}"; // Default to empty string if not set
+            var decryptedKey = "{{ decryptedKey|default('') }}"; 
             var modal = document.getElementById("decryptedKeyModal");
             var span = document.getElementsByClassName("close")[0];
 
-            if (decryptedKey) {
+            if (decryptedKey && !decryptedKey.startsWith("None")) {
                 document.getElementById('decryptedKey').innerText = decryptedKey;
                 modal.style.display = "block";
                 setTimeout(() => {
                     modal.classList.add("show");
-                }, 10); // small delay to ensure display:block takes effect
+                }, 10); 
             }
 
             span.onclick = function() {
                 modal.classList.remove("show");
                 setTimeout(() => {
                     modal.style.display = "none";
-                }, 500); // match the transition duration
+                }, 500); 
             }
 
             window.onclick = function(event) {
@@ -64,7 +64,7 @@
                     modal.classList.remove("show");
                     setTimeout(() => {
                         modal.style.display = "none";
-                    }, 500); // match the transition duration
+                    }, 500); 
                 }
             }
         });
