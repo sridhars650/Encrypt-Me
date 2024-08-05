@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encryption Chamber</title>
+    <link rel="stylesheet" href="static/endecrypt.css">
 </head>
 <body>
     <form action="/encrypt" method="post">
@@ -22,6 +23,7 @@
         </select><br><br>
 
         <input type="submit" value="Encrypt">
+        <button onclick="location.href='/decrypt'" class="alt-button">Decrypt It!</button>
     </form>
     {% if encryptedKey %}
     <h3>Your Encrypted Key is:</h3>
@@ -31,7 +33,5 @@
     <h3>Save this key for decryption (If you used Fernet):</h3>
     <h2>{{ fernet_key }}</h2>
     {% endif %}
-
-    <button onclick="location.href='/decrypt'">Decrypt It!</button>
 </body>
 </html>
