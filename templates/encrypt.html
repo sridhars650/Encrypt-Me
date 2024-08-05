@@ -10,14 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700" rel="stylesheet">
 </head>
-</head>
 <body>
     <button onclick="location.href='/'" class="fa-solid fa-left-long alt-button back-btn"></button>
     <form action="/encrypt" method="post">
         <label for="key">Enter your key/secret here:</label><br>
         <input type="text" id="key" name="key" required><br><br>
-
-
         <label for="method">Select the encryption method:</label><br>
         <select id="method" name="method" required>
             <option value="1">base64</option>
@@ -27,17 +24,43 @@
             <option value="5">base32hex</option>
             <option value="6">Fernet</option>
         </select><br><br>
-
         <input type="submit" value="Encrypt">
         <button onclick="location.href='/decrypt'" class="alt-button">Decrypt It!</button>
     </form>
+
+    <div id="encryptedKeyModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Encrypted Key</h2>
+            <p id="encryptedKey"></p>
+        </div>
+    </div>
+
     {% if encryptedKey %}
-    <h3>Your Encrypted Key is:</h3>
-    <h2>{{ encryptedKey }}</h2>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('encryptedKey').innerText = "{{ encryptedKey }}";
+            document.getElementById('encryptedKeyModal').style.display = 'block';
+        });
+    </script>
     {% endif %}
+
     {% if fernet_key %}
     <h3>Save this key for decryption (If you used Fernet):</h3>
     <h2>{{ fernet_key }}</h2>
     {% endif %}
+
+    <script>
+        var modal = document.getElementById("encryptedKeyModal");
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

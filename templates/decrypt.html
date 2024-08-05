@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700" rel="stylesheet">
-</head>
 </head>
 <body>
     <button onclick="location.href='/'" class="fa-solid fa-left-long alt-button back-btn"></button>
@@ -28,13 +26,38 @@
             <option value="5">base32hex</option>
             <option value="6">Fernet</option>
         </select><br><br>
-
         <input type="submit" value="Decrypt">
         <button onclick="location.href='/encrypt'" class="alt-button">Encrypt It!</button>
-        {% if decryptedKey %}
-        <h3>Your Decrypted Key is:</h3>
-        <h2>{{ decryptedKey }}</h2>
-        {% endif %}
     </form>
+
+    <div id="decryptedKeyModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Decrypted Key</h2>
+            <p id="decryptedKey"></p>
+        </div>
+    </div>
+
+    {% if decryptedKey %}
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('decryptedKey').innerText = "{{ decryptedKey }}";
+            document.getElementById('decryptedKeyModal').style.display = 'block';
+        });
+    </script>
+    {% endif %}
+
+    <script>
+        var modal = document.getElementById("decryptedKeyModal");
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
