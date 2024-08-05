@@ -37,21 +37,36 @@ def encryptPage():
     if request.method == 'POST': # if post was recieved
         key = request.form['key'] # add key form param to var key
         method = int(request.form['method']) # same thing with method but convert to int
-        fernet_key = Fernet.generate_key() # generates a secure fernet key
         if method in encode_methods: # detects method
             encryptedKey = encryptIt(encode_methods[method], key) # does encryption
         elif method == 6: # special case for fernet encryption
+            fernet_key = Fernet.generate_key() # generates a secure fernet key
             if fernet_key: # if there is the key
-                f = Fernet(fernet_key.encode('utf-8')) # encodes it
+                f = Fernet(fernet_key) # encodes it
                 encryptedKey = f.encrypt(bytes(key, "utf-8")).decode('utf-8') # using key, it encrypts
+                fernet_key = fernet_key.decode()
             else:
                 encryptedKey = "Fernet key is required for Fernet encryption." # else it gives error
 
-    return render_template("encrypt.html", encryptedKey=encryptedKey, fernet_key=fernet_key.decode()) # returns with variables
+    return render_template("encrypt.html", encryptedKey=encryptedKey, fernet_key=fernet_key) # returns with variables
 
-@app.route('/decrypt')
+@app.route('/decrypt', methods=['GET','POST']) 
 def decryptPage():
-    return render_template('decrypt.html')
+    decryptedKey = None
+    fernet_key = None
+    if request.method == 'POST':
+        key = request.form['key']
+        method = int(request.form['method'])
+        fernet_key = request.form['fernet_key']
+        if method in decode_methods:
+            decryptedKey = decryptIt(decode_methods[method], key)
+        elif method == 6: # special case for fernet encryption
+            if fernet_key: # if there is the key
+                f = Fernet(fernet_key.encode('utf-8')) # encodes it
+                decryptedKey = f.decrypt(bytes(key, "utf-8")).decode('utf-8') # using key, it encrypts
+            else:
+                decryptedKey = "Fernet key is required for Fernet encryption." # else it gives error
+    return render_template('decrypt.html', decryptedKey=decryptedKey)
 
 if __name__ == "__main__":
     app.run(debug=True)

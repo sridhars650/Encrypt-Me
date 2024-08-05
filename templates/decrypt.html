@@ -23,6 +23,9 @@
         </select><br><br>
 
         <input type="submit" value="Decrypt">
-    
+        {% if decryptedKey %}
+        <h3>Your Decrypted Key is:</h3>
+        <h2>{{ decryptedKey }}</h2>
+        {% endif %}
 </body>
 </html>
