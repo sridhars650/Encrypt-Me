@@ -1,6 +1,6 @@
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Oswald", sans-serif;
     background: linear-gradient(135deg, #f3f3f3, #e2e2e2);
     display: flex;
     justify-content: center;
@@ -24,6 +24,7 @@ label {
     color: #333;
 }
 input[type="text"], select {
+    font-family: "Oswald", sans-serif;
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -32,6 +33,7 @@ input[type="text"], select {
     box-sizing: border-box;
 }
 input[type="submit"], button {
+    font-family: "Oswald", sans-serif;
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -71,4 +73,24 @@ h3, h2 {
 
 .alt-button:hover {
     background-color:#0f7f89
+}
+
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 20px;
+    height: 30px;
+    padding: 10px 20px;
+    text-align: left;
+    justify-content: left;
+    align-items: left;
+}
+
+
+.fa-left-long:before,.fa-long-arrow-alt-left:before {
+    content: "\f30a";
+    position: fixed;
+    left: 32px;
+    top: 37px;
 }

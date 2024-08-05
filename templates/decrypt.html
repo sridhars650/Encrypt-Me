@@ -6,10 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decryption Chamber</title>
     <link rel="stylesheet" href="static/endecrypt.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700" rel="stylesheet">
+</head>
 </head>
 <body>
+    <button onclick="location.href='/'" class="fa-solid fa-left-long alt-button back-btn"></button>
     <form action="/decrypt" method="post">
-        <label for="key">Enter your encrypted key here:</label><br>
+        <label for="key">Enter your encrypted key/secret here:</label><br>
         <input type="text" id="key" name="key" required><br><br>
         <label for="fernet_key">Enter your Fernet key here (only for Fernet encryption/decryption):</label><br>
         <input type="text" id="fernet_key" name="fernet_key"><br><br>
