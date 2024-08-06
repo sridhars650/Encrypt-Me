@@ -95,9 +95,9 @@ You can find a live demo at ->
 
 ### Encryption Page
 
-![Encryption Page](encryptPage.png)
+![Encryption Page](images/encryptPage.png)
 
 ### Decryption Page
 
-![Decryption Page](decryptPage.png)
+![Decryption Page](images/decryptPage.png)
 
