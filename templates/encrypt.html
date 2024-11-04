@@ -14,9 +14,9 @@
 <body>
     <button onclick="location.href='/'" class="fa-solid fa-left-long alt-button back-btn"></button>
     <form action="/encrypt" method="post">
-        <label for="key">Enter your key/secret here:</label><br>
+        <label for="key">Enter your plaintext here:</label><br>
         <input type="text" id="key" name="key" required><br><br>
-        <label for="method">Select the encryption method:</label><br>
+        <label for="method">Select the encryption/encoding method:</label><br>
         <select id="method" name="method" required>
             <option value="1">base64</option>
             <option value="2">a85</option>
@@ -26,7 +26,6 @@
             <option value="6">Fernet</option>
         </select><br><br>
         <input type="submit" value="Encrypt">
-        <button onclick="location.href='/decrypt'" class="alt-button">Decrypt It!</button>
     </form>
 
     <div id="encryptedKeyModal" class="modal">
