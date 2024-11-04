@@ -14,11 +14,11 @@
 <body>
     <button onclick="location.href='/'" class="fa-solid fa-left-long alt-button back-btn"></button>
     <form action="/decrypt" method="post">
-        <label for="key">Enter your encrypted key/secret here:</label><br>
+        <label for="key">Enter your ciphertext here:</label><br>
         <input type="text" id="key" name="key" required><br><br>
         <label for="fernet_key">Enter your Fernet key here (only for Fernet encryption/decryption):</label><br>
         <input type="text" id="fernet_key" name="fernet_key"><br><br>
-        <label for="method">Select the encryption method:</label><br>
+        <label for="method">Select the encryption/encoding method:</label><br>
         <select id="method" name="method" required>
             <option value="1">base64</option>
             <option value="2">a85</option>
@@ -28,13 +28,12 @@
             <option value="6">Fernet</option>
         </select><br><br>
         <input type="submit" value="Decrypt">
-        <button type="button" onclick="location.href='/encrypt'" class="alt-button">Encrypt It!</button>
     </form>
 
     <div id="decryptedKeyModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Your Decrypted Key</h2>
+            <h2>Your plaintext</h2>
             <p id="decryptedKey"></p>
         </div>
     </div>
